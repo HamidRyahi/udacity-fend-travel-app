@@ -1,0 +1,132 @@
+body{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+#container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 500px 1fr;
+    grid-template-areas: 
+    "top"
+    "md"
+    "ft";
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 50px;
+    margin: 0px 90px;
+}
+
+.headline {
+    grid-area: top;
+    font-size: 30px;
+    margin: auto;
+}
+
+.middle {
+    grid-area: md;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin-top: 250px;
+
+}
+
+.left_box {
+    text-align: center;
+    width: 50%;
+}
+
+.right_box {
+    display: none;
+    flex-direction: column;
+    width: 50%;
+}
+
+.footer {
+    grid-area: ft;
+    text-align: center;
+}
+
+.form_handler {
+    padding: 50px;
+}
+
+.to {
+    padding-bottom: 25px;
+
+}
+
+.date_input {
+    padding-bottom: 25px;
+
+}
+
+.end {
+    padding-bottom: 25px;
+
+}
+
+#generate {
+    width: 100px;
+    height: 25px;
+}
+
+.img_container {
+    height: 400px;
+}
+
+
+
+.text {
+    text-align: center;
+    align-items: center;
+    font-size: medium;
+}
+
+.countryFlag {
+    width: 320px;
+    margin: auto;
+}
+
+#generate:hover {
+    background-color: gray;
+}
+
+#city:hover, #depart:hover, #end:hover {
+    -webkit-box-shadow: 0px 2px 12px 3px rgba(0,0,0,0.88); 
+box-shadow: 0px 2px 12px 3px rgba(0,0,0,0.88);
+}
+
+input {
+    margin: 8px 0;
+    border-radius: 4px;
+}
+
+#city:focus {
+    padding: 12px 20px;
+    background-color: #96bae8;
+    color: #5a3f3f !important;
+}
+
+@media only screen and (max-width: 972px) {
+    .middle {
+        flex-direction: column;
+    }
+    .img_container {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+
+    }
+    .right_box {
+        width: 100%;
+    }
+    .left_box {
+        width: 100%;
+    }
+  }
+  
