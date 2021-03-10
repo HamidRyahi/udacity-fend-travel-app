@@ -24,9 +24,7 @@ const lengthOfTrip = () => {
     let differenceInTime = date1.getTime() - date2.getTime();
 
     let differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    console.log(differenceInDays)
     let num = parseInt(differenceInDays)
-    console.log(num)
 
     return num;
 

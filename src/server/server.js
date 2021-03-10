@@ -48,7 +48,7 @@ app.post("/geonames", async (req, res) => {
   });
   try {
     const data = await response.json();
-    console.log(data.geonames[0].countryCode)
+    // console.log(data.geonames[0].countryCode)
     res.send({
       latitude: data.geonames[0].lat,
       longitude: data.geonames[0].lng,
@@ -68,7 +68,7 @@ app.post("/wbd", async (req, res) => {
   const longitude = req.body.longitude;
   const numOfDays = req.body.days + 1;
   // console.log('WB request body:', req.body)
-  console.log(latitude, longitude, numOfDays);
+  // console.log(latitude, longitude, numOfDays);
   let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${process.env.WB_key}&days=${numOfDays}`;
   console.log('WB url:', url);
   const response = await fetch(url, {
@@ -79,7 +79,7 @@ app.post("/wbd", async (req, res) => {
   });
   try {
     const data = await response.json();
-    console.log('WB data', data.data[numOfDays - 1].low_temp)
+    // console.log('WB data', data.data[numOfDays - 1].low_temp)
     res.send({
       lowTemp: data.data[numOfDays - 1].low_temp,
       maxTemp: data.data[numOfDays - 1].max_temp,
@@ -96,7 +96,7 @@ app.post("/wbd", async (req, res) => {
 app.post("/pb", async (req, res) => {
   const city = req.body.cityName;
   const country = req.body.country;
-  console.log(city);
+  // console.log(city);
   let url = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${city}&image_type=photo`;
   console.log('PB url:', url);
   const response = await fetch(url, {

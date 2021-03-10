@@ -3,6 +3,9 @@ let departDate = document.getElementById('depart');
 let endDate = document.getElementById('end');
 const waitText = document.querySelector('.wait');
 const goButton = document.getElementById('generate');
+const imgContainer = document.querySelector('.img_container');
+const feedText = document.querySelector('.feed');
+const rightBox = document.querySelector('.right_box');
 
 if (goButton) {
 	goButton.addEventListener('click', handleSubmit);
@@ -15,7 +18,7 @@ function handleSubmit(event) {
 	} else {
 		let geoNamesData = []
 		let weatherBitData = []
-		let entredCity = document.getElementById('city').value;
+		let entredCity = cityInput.value;
 		console.log(entredCity)
 		waitText.textContent = 'Please wait a second! '
 
@@ -40,7 +43,7 @@ function handleSubmit(event) {
 					.then(res => res.json())
 					.then(function (res) {
 						weatherBitData.push(res);
-						console.log(weatherBitData)
+						console.log('WB data', weatherBitData)
 						fetch('http://localhost:8081/pb', {
 							method: "POST",
 							headers: {
@@ -56,57 +59,38 @@ function handleSubmit(event) {
 			})
 
 		const numba = Client.lengthOfTrip();
-		console.log('my numba', numba);
-		const dayORdays = () => {
-			if (numba == 1) {
-				return 'day'
-			} else {
-				return 'days'
-			}
-		}
-
 		const numba2 = Client.countdown();
-		console.log('my numba', numba2);
-		const dayORdays2 = () => {
-			if (numba2 == 1) {
+
+		const dayORdays = (num) => {
+			if (num == 1) {
 				return 'day'
 			} else {
 				return 'days'
 			}
 		}
-
 		const updateUI = (res) => {
 			waitText.textContent = ''
+			rightBox.style.display = 'flex';
 			if (res.img !== undefined) {
-				document.querySelector('.img_container').style.display = 'flex';
-				document.querySelector('.countryFlag').setAttribute('src', '')
-				document.querySelector('.countryFlag').style.display = 'none';
-				// document.querySelector('.img_container').style.display = 'block';
-				// document.querySelector('.img_container').style.cssText = `background-image: url("${res.img}"); background-position: center; background-repeat: no-repeat; background-size: cover;`;
-				document.querySelector('.img_container').setAttribute('src', `${res.img}`)
+				imgContainer.setAttribute('src', `${res.img}`)
 			}
 			if (res.img === undefined) {
-				document.querySelector('.img_container').style.display = 'flex';
-				document.querySelector('.countryFlag').style.display = 'block';
-				document.querySelector('.img_container').style.display = 'none';
-				document.querySelector('.countryFlag').setAttribute('src', `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`)
+				imgContainer.setAttribute('src', `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`)
 			}
-			document.querySelector('.right_box').style.display = 'flex';
-			console.log(weatherBitData)
 			if (weatherBitData[0].lowTemp === undefined) {
-				document.querySelector('.feed').innerHTML = `<p>Your trip to: <strong>${geoNamesData[0].city}, ${geoNamesData[0].region}, ${geoNamesData[0].country}</strong></p>
+				feedText.innerHTML = `<p>Your trip to: <strong>${geoNamesData[0].city}, ${geoNamesData[0].region}, ${geoNamesData[0].country}</strong></p>
 					<p>Departing: ${departDate.value}</p>
 					<p>End Date: ${endDate.value}</p>
-					<p>${geoNamesData[0].city}, ${geoNamesData[0].country} is <strong>${Client.countdown()}</strong> ${dayORdays2()} away</p>
-					<p>The length of your trip is: <strong>${Client.lengthOfTrip()}</strong> ${dayORdays()} </p>
+					<p>${geoNamesData[0].city}, ${geoNamesData[0].country} is <strong>${Client.countdown()}</strong> ${dayORdays(numba2)} away</p>
+					<p>The length of your trip is: <strong>${Client.lengthOfTrip()}</strong> ${dayORdays(numba)} </p>
 					<p>The weather for ${departDate.value} is not yet available.</p>`
 			}
 			if (weatherBitData[0].lowTemp !== undefined) {
-				document.querySelector('.feed').innerHTML = `<p>Your trip to: <strong>${geoNamesData[0].city}, ${geoNamesData[0].region}, ${geoNamesData[0].country}</strong></p>
+				feedText.innerHTML = `<p>Your trip to: <strong>${geoNamesData[0].city}, ${geoNamesData[0].region}, ${geoNamesData[0].country}</strong></p>
 					<p>Departing: ${departDate.value}<br>
 					End Date: ${endDate.value}</p>
-					<p>${geoNamesData[0].city}, ${geoNamesData[0].country} is <strong>${Client.countdown()}</strong> ${dayORdays2()} away</p>
-					<p>The length of your trip is: <strong>${Client.lengthOfTrip()}</strong> ${dayORdays()} </p>
+					<p>${geoNamesData[0].city}, ${geoNamesData[0].country} is <strong>${Client.countdown()}</strong> ${dayORdays(numba2)} away</p>
+					<p>The length of your trip is: <strong>${Client.lengthOfTrip()}</strong> ${dayORdays(numba)} </p>
 					<p>Typical weather for ${weatherBitData[0].date} is:</p>
 					<p><strong>High: ${weatherBitData[0].maxTemp}, Low: ${weatherBitData[0].lowTemp}</strong><br>
 					<strong>${weatherBitData[0].description}</strong> throughout the day.</p>`
