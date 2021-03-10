@@ -11,56 +11,55 @@
 
 <body>
   <div id="container">
-    <div class="headline box">
+
+    <header class="headline">
       <p>Travel Planer App</p>
-    </div>
-    <div class="middle">
-      <div class="left_box box">
-        <div class="form_handler">
-          <div class="to">
-            <label for="city">To</label><br>
-            <input type="text" id="city" placeholder="Destination City">
-          </div>
-          <div class="date_input">
-            <label for="start-date">Departure</label><br>
-            <input type="date" name="depart" id="depart" onchange="Client.endInputHandler();"><br><br>
-            <label for="start-date">End</label><br>
-            <input type="date" name="end" id="end">
+    </header>
 
-          </div>
-          <div class="go_btn">
-            <button id="generate" type="submit"> Go! </button>
-          </div>
-          <div class="">
-            <p class="wait"></p>
-          </div>
-
+    <section class="left_box">
+      <div class="form_handler">
+        <div class="to">
+          <label for="city">To</label><br>
+          <input type="text" id="city" placeholder="Destination City">
+        </div>
+        <div class="date_input">
+          <label for="start-date">Departure</label><br>
+          <input type="date" name="depart" id="depart" onchange="Client.endInputHandler();"><br><br>
+          <label for="start-date">End</label><br>
+          <input type="date" name="end" id="end">
+        </div>
+        <div class="go_btn">
+          <button id="generate" type="submit"> Go! </button>
         </div>
       </div>
-      <div class="right_box box">
-        <div class="img_container">
-        </div>
+      <div class="">
+        <p class="wait"></p>
+      </div>
+    </section>
+      <section class="right_box">
+        <div class="image_place">
+          <img src ='' class="img_container">
           <img alt="" class="countryFlag">
-        
-        <hr>
-        <div class="text">
-          <p class="feed"></p>
         </div>
-      </div>
-    </div>
-    <div class="footer box">
-    </div>
+        <div class="text">
+          <p class="feed">test</p>
+        </div>
+      </section>
+
+    <footer class="footer">
+      <p>This is a footer.</p>
+    </footer>
   </div>
   <script>
     // Check that service workers are supported
     if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/service-worker.js');
-        });
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
     }
-   </script>
-      
+  </script>
+
 </body>
 
 </html>

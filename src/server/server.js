@@ -39,7 +39,7 @@ app.post("/geonames", async (req, res) => {
   const city = req.body.cityName;
   // console.log("City:", city);
   let url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=10&username=${process.env.GN_key}`;
-  // console.log('GN url:', url);
+  console.log('GN url:', url);
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -54,7 +54,8 @@ app.post("/geonames", async (req, res) => {
       longitude: data.geonames[0].lng,
       country: data.geonames[0].countryName,
       city: data.geonames[0].toponymName,
-      countryCode: data.geonames[0].countryCode
+      countryCode: data.geonames[0].countryCode,
+      region: data.geonames[0].adminName1
     });
   } catch (err) {
     console.log("error", err);
