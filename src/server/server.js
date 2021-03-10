@@ -37,7 +37,6 @@ app.get("/", (req, res) => {
 app.post("/geonames", async (req, res) => {
   console.log('GN request body:', req.body)
   const city = req.body.cityName;
-  // console.log("City:", city);
   let url = `http://api.geonames.org/searchJSON?q=${city}&maxRows=10&username=${process.env.GN_key}`;
   console.log('GN url:', url);
   const response = await fetch(url, {
@@ -48,7 +47,6 @@ app.post("/geonames", async (req, res) => {
   });
   try {
     const data = await response.json();
-    // console.log(data.geonames[0].countryCode)
     res.send({
       latitude: data.geonames[0].lat,
       longitude: data.geonames[0].lng,
@@ -58,7 +56,7 @@ app.post("/geonames", async (req, res) => {
       region: data.geonames[0].adminName1
     });
   } catch (err) {
-    console.log("GN error", err);
+    console.log("error", err);
   }
 });
 
@@ -66,9 +64,6 @@ app.post("/geonames", async (req, res) => {
 app.post("/wbd", async (req, res) => {
   const latitude = req.body.latitude;
   const longitude = req.body.longitude;
-  // const numOfDays = req.body.days + 1;
-  // console.log('WB request body:', req.body)
-  // console.log(latitude, longitude, numOfDays);
   let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${process.env.WB_key}`;
   console.log('WB url:', url);
   const response = await fetch(url, {
@@ -79,7 +74,6 @@ app.post("/wbd", async (req, res) => {
   });
   try {
     const data = await response.json();
-    // console.log('WB data test', data.data)
     res.send({
       wbData: data.data
     });
@@ -92,7 +86,6 @@ app.post("/wbd", async (req, res) => {
 app.post("/pb", async (req, res) => {
   const city = req.body.cityName;
   const country = req.body.country;
-  // console.log(city);
   let url = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${city}&image_type=photo`;
   console.log('PB url:', url);
   const response = await fetch(url, {
@@ -103,12 +96,11 @@ app.post("/pb", async (req, res) => {
   });
   try {
     const data = await response.json();
-    // console.log(data)
     res.send({
       img: data.hits[0].webformatURL
     });
   } catch (err) {
-    console.log("PB error", err);
+    console.log("error", err);
     // let url2 = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${country}&image_type=photo`;
     // const response = await fetch(url2, {
     //   method: "POST",
@@ -122,7 +114,7 @@ app.post("/pb", async (req, res) => {
     //   res.send({
     //     img: data.hits[0].webformatURL
     //   });
-    // } catch (err) { 
+    // } catch (err) {
     //   console.log("error", err);
     // }
     res.send({
