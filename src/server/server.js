@@ -58,7 +58,7 @@ app.post("/geonames", async (req, res) => {
       region: data.geonames[0].adminName1
     });
   } catch (err) {
-    console.log("error", err);
+    console.log("GN error", err);
   }
 });
 
@@ -66,10 +66,10 @@ app.post("/geonames", async (req, res) => {
 app.post("/wbd", async (req, res) => {
   const latitude = req.body.latitude;
   const longitude = req.body.longitude;
-  const numOfDays = req.body.days + 1;
+  // const numOfDays = req.body.days + 1;
   // console.log('WB request body:', req.body)
   // console.log(latitude, longitude, numOfDays);
-  let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${process.env.WB_key}&days=${numOfDays}`;
+  let url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=${process.env.WB_key}`;
   console.log('WB url:', url);
   const response = await fetch(url, {
     method: "POST",
@@ -79,13 +79,9 @@ app.post("/wbd", async (req, res) => {
   });
   try {
     const data = await response.json();
-    // console.log('WB data', data.data[numOfDays - 1].low_temp)
+    // console.log('WB data test', data.data)
     res.send({
-      lowTemp: data.data[numOfDays - 1].low_temp,
-      maxTemp: data.data[numOfDays - 1].max_temp,
-      temp: data.data[numOfDays - 1].temp,
-      description: data.data[numOfDays - 1].weather.description,
-      date: data.data[numOfDays - 1].valid_date
+      wbData: data.data
     });
   } catch (err) {
     console.log("WB error", err);
@@ -112,7 +108,7 @@ app.post("/pb", async (req, res) => {
       img: data.hits[0].webformatURL
     });
   } catch (err) {
-    console.log("error", err);
+    console.log("PB error", err);
     // let url2 = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${country}&image_type=photo`;
     // const response = await fetch(url2, {
     //   method: "POST",
@@ -126,7 +122,7 @@ app.post("/pb", async (req, res) => {
     //   res.send({
     //     img: data.hits[0].webformatURL
     //   });
-    // } catch (err) {
+    // } catch (err) { 
     //   console.log("error", err);
     // }
     res.send({
