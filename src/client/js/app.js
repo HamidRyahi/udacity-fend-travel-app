@@ -96,7 +96,7 @@ function handleSubmit(event) {
 					<p>Typical weather for ${weatherBitData[0].wbData[numba2].datetime} is:</p>
 					<p><strong>High: ${weatherBitData[0].wbData[numba2].max_temp}, Low: ${weatherBitData[0].wbData[numba2].min_temp}</strong><br>
 					<strong>${weatherBitData[0].wbData[numba2].weather.description}</strong> throughout the day.</p>`
-					
+
 				document.querySelector('.d1').innerHTML = `${weatherBitData[0].wbData[0].datetime}`
 				document.querySelector('.d2').innerHTML = `${weatherBitData[0].wbData[1].datetime}`
 				document.querySelector('.d3').innerHTML = `${weatherBitData[0].wbData[2].datetime}`
@@ -135,6 +135,7 @@ function handleSubmit(event) {
 				document.querySelector('.w7l').textContent = `${weatherBitData[0].wbData[6].min_temp}`
 
 			}
+			Client.makeMap(geoNamesData[0].latitude, geoNamesData[0].longitude);
 
 		}
 

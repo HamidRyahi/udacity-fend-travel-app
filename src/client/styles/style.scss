@@ -2,18 +2,19 @@
 body{
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    // margin: auto;
+    margin: auto;
 }
 
 #container{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px auto auto auto 50px;
+    grid-template-rows: 50px auto auto auto auto 50px;
     grid-template-areas: 
     "hd"
     "lb"
     "rb"
     "ww"
+    "mp"
     "ft";
     color: #000000;
     // justify-content: center;
@@ -26,6 +27,10 @@ body{
     grid-area: hd;
     text-align: center;
     
+}
+
+#logo {
+    font-size: 30px;
 }
 
 .left_box {
@@ -70,11 +75,6 @@ input {
     margin: auto;
 }
 
-.kkk {
-    display: none;
-}
-
-
 .img_container {
     margin: auto;
     width: 100%;
@@ -97,6 +97,15 @@ input {
     // margin-top: 50px;
 }
 
+.map {
+    grid-area: mp;
+}
+
+#issMap {
+    height: 300px;
+    width: 700px;
+    margin: auto;
+}
 
 .footer {
     grid-area: ft;
@@ -119,11 +128,10 @@ input {
     color: #5a3f3f !important;
 }
 
-@media only screen and (min-width: 500px) {
-    // .img_container {
-    //     width: 487.200px;
-    //     height: 365.400px;
-    // }
+@media only screen and (max-width: 628px) {
+    .first_rows {
+        font-size: small;
+    }
 }
 
 @media only screen and (min-width: 821px) {

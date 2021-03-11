@@ -56,7 +56,7 @@ app.post("/geonames", async (req, res) => {
       region: data.geonames[0].adminName1
     });
   } catch (err) {
-    console.log("error", err);
+    console.log("GN error", err);
   }
 });
 
@@ -85,7 +85,7 @@ app.post("/wbd", async (req, res) => {
 
 app.post("/pb", async (req, res) => {
   const city = req.body.cityName;
-  const country = req.body.country;
+  // const country = req.body.country;
   let url = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${city}&image_type=photo`;
   console.log('PB url:', url);
   const response = await fetch(url, {
@@ -100,7 +100,7 @@ app.post("/pb", async (req, res) => {
       img: data.hits[0].webformatURL
     });
   } catch (err) {
-    console.log("error", err);
+    console.log("PB error", err);
     // let url2 = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${country}&image_type=photo`;
     // const response = await fetch(url2, {
     //   method: "POST",

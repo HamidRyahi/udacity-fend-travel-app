@@ -1,4 +1,5 @@
 import { handleSubmit } from './js/app'
+import { makeMap } from './js/issMap'
 import { endInputHandler } from './js/endInputHandler'
 import {countdown} from './js/handleDays'
 import {lengthOfTrip} from './js/handleDays'
@@ -12,4 +13,5 @@ export {
     lengthOfTrip,
     todayDate,
     endInputHandler,
+    makeMap
 }

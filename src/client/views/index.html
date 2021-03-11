@@ -6,13 +6,20 @@
   <title>Travel Planner App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
 </head>
 
 <body>
   <div id="container">
 
     <header class="headline">
-      <p>Travel Planer App</p>
+      <h1 id="logo">Travel Planer App</h1>
     </header>
 
     <section class="left_box">
@@ -46,6 +53,9 @@
 
     <section class="weather_week">
       <div class="table">
+        <div>
+          <p>Next week</p>
+        </div>
         <div class="first_rows">
           <div class="date_row d1"></div>
           <div class="date_row d2"></div>
@@ -58,7 +68,6 @@
         <div class="second_rows">
           <div class="weather_row w1">
             <img class="icon i1" src="">
-            <hr>
             <div class="w1hl">
               <p class="w1h"></p>
               <p class="w1l"></p>
@@ -66,7 +75,6 @@
           </div>
           <div class="weather_row w2">
             <img class="icon i2" src="">
-            <hr>
             <div class="w2h2">
               <p class="w2h"></p>
               <p class="w2l"></p>
@@ -75,7 +83,6 @@
           </div>
           <div class="weather_row w3">
             <img class="icon i3" src="">
-            <hr>
             <div class="w3h3">
               <p class="w3h"></p>
               <p class="w3l"></p>
@@ -84,7 +91,6 @@
           </div>
           <div class="weather_row w4">
             <img class="icon i4" src="">
-            <hr>
             <div class="w4h4">
               <p class="w4h"></p>
               <p class="w4l"></p>
@@ -93,7 +99,6 @@
           </div>
           <div class="weather_row w5">
             <img class="icon i5" src="">
-            <hr>
             <div class="w5h5">
               <p class="w5h"></p>
               <p class="w5l"></p>
@@ -102,7 +107,6 @@
           </div>
           <div class="weather_row w6">
             <img class="icon i6" src="">
-            <hr>
             <div class="w6h6">
               <p class="w6h"></p>
               <p class="w6l"></p>
@@ -111,7 +115,6 @@
           </div>
           <div class="weather_row w7">
             <img class="icon i7" src="">
-            <hr>
             <div class="w7h7">
               <p class="w7h"></p>
               <p class="w7l"></p>
@@ -123,6 +126,10 @@
       </div>
 
     </section>
+
+    <div class="map" id="issMap">
+
+    </div>
 
     <footer class="footer">
       <p>This is a footer.</p>
