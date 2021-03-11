@@ -135,7 +135,7 @@ function handleSubmit(event) {
 				document.querySelector('.w7l').textContent = `${weatherBitData[0].wbData[6].min_temp}`
 
 			}
-			Client.makeMap(geoNamesData[0].latitude, geoNamesData[0].longitude);
+			Client.mkmp(geoNamesData[0].latitude, geoNamesData[0].longitude);
 
 		}
 
