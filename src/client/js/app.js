@@ -73,10 +73,11 @@ function handleSubmit(event) {
 			waitText.textContent = ''
 			rightBox.style.display = 'flex';
 			if (res.img !== undefined) {
-				imgContainer.setAttribute('src', `${res.img}`)
+				imgContainer.src = `${res.img}`
 			}
 			if (res.img === undefined) {
-				imgContainer.setAttribute('src', `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`)
+				// imgContainer.setAttribute('src', `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`)
+				imgContainer.src = `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`
 			}
 			if (weatherBitData[0].wbData[numba2] === undefined) {
 				feedText.innerHTML = `<p>Your trip to: <strong>${geoNamesData[0].city}, ${geoNamesData[0].region}, ${geoNamesData[0].country}</strong></p>
@@ -95,6 +96,7 @@ function handleSubmit(event) {
 					<p>Typical weather for ${weatherBitData[0].wbData[numba2].datetime} is:</p>
 					<p><strong>High: ${weatherBitData[0].wbData[numba2].max_temp}, Low: ${weatherBitData[0].wbData[numba2].min_temp}</strong><br>
 					<strong>${weatherBitData[0].wbData[numba2].weather.description}</strong> throughout the day.</p>`
+					
 				document.querySelector('.d1').innerHTML = `${weatherBitData[0].wbData[0].datetime}`
 				document.querySelector('.d2').innerHTML = `${weatherBitData[0].wbData[1].datetime}`
 				document.querySelector('.d3').innerHTML = `${weatherBitData[0].wbData[2].datetime}`
@@ -107,7 +109,7 @@ function handleSubmit(event) {
 				document.querySelector('.i1').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${weatherBitData[0].wbData[0].weather.icon}.png`)
 				document.querySelector('.w1h').textContent = `${weatherBitData[0].wbData[0].max_temp}`
 				document.querySelector('.w1l').textContent = `${weatherBitData[0].wbData[0].min_temp}`
-				
+
 				document.querySelector('.i2').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${weatherBitData[0].wbData[1].weather.icon}.png`)
 				document.querySelector('.w2h').textContent = `${weatherBitData[0].wbData[1].max_temp}`
 				document.querySelector('.w2l').textContent = `${weatherBitData[0].wbData[1].min_temp}`
