@@ -46,7 +46,7 @@ function handleSubmit(event) {
 							headers: {
 								"Content-Type": "application/JSON"
 							},
-							body: JSON.stringify({ cityName: `${entredCity}%20${geoNamesData[0].country}`, country: geoNamesData[0].country })
+							body: JSON.stringify({ cityName: `${entredCity}%20${geoNamesData[0].country}`, country: geoNamesData[0].country, num: Math.floor(Math.random() * 6)})
 						})
 							.then(res => res.json())
 							.then(function (res) {
@@ -76,7 +76,6 @@ function handleSubmit(event) {
 				imgContainer.src = `${res.img}`
 			}
 			if (res.img === undefined) {
-				// imgContainer.setAttribute('src', `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`)
 				imgContainer.src = `${res.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`
 			}
 			if (weatherBitData[0].wbData[numba2] === undefined) {
@@ -135,6 +134,8 @@ function handleSubmit(event) {
 				document.querySelector('.w7l').textContent = `${weatherBitData[0].wbData[6].min_temp}`
 
 			}
+			document.querySelector('.map').style.display = 'block'
+
 			Client.mkmp(geoNamesData[0].latitude, geoNamesData[0].longitude);
 
 		}

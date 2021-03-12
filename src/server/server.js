@@ -85,7 +85,7 @@ app.post("/wbd", async (req, res) => {
 
 app.post("/pb", async (req, res) => {
   const city = req.body.cityName;
-  // const country = req.body.country;
+  const num = req.body.num;
   let url = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${city}&image_type=photo`;
   console.log('PB url:', url);
   const response = await fetch(url, {
@@ -97,7 +97,7 @@ app.post("/pb", async (req, res) => {
   try {
     const data = await response.json();
     res.send({
-      img: data.hits[0].webformatURL
+      img: data.hits[num].webformatURL
     });
   } catch (err) {
     console.log("PB error", err);

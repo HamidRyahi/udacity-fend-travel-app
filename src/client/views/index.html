@@ -6,6 +6,8 @@
   <title>Travel Planner App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
@@ -26,13 +28,13 @@
       <div class="form_handler">
         <div class="to">
           <label for="city">To</label><br>
-          <input type="text" id="city" placeholder="Destination City">
+          <input class="w3-input" type="text" id="city" placeholder="Destination City">
         </div>
         <div class="date_input">
           <label for="start-date">Departure</label><br>
-          <input type="date" name="depart" id="depart" onchange="Client.endInputHandler();"><br><br>
+          <input class="w3-input" type="date" name="depart" id="depart" onchange="Client.endInputHandler();"><br><br>
           <label for="start-date">End</label><br>
-          <input type="date" name="end" id="end">
+          <input class="w3-input" type="date" name="end" id="end">
         </div>
         <div class="go_btn">
           <button id="generate" type="submit"> Go! </button>
