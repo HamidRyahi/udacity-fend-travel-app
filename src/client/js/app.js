@@ -63,36 +63,16 @@ const updateUI = (dt) => {
 			<p>Typical weather for ${dt.wbData[numba2].datetime} is:</p>
 			<p><strong>High: ${dt.wbData[numba2].max_temp}, Low: ${dt.wbData[numba2].min_temp}</strong><br>
 			<strong>${dt.wbData[numba2].weather.description}</strong> throughout the day.</p>`
-		document.querySelector('.d1').innerHTML = `${dt.wbData[0].datetime}`
-		document.querySelector('.d2').innerHTML = `${dt.wbData[1].datetime}`
-		document.querySelector('.d3').innerHTML = `${dt.wbData[2].datetime}`
-		document.querySelector('.d4').innerHTML = `${dt.wbData[3].datetime}`
-		document.querySelector('.d5').innerHTML = `${dt.wbData[4].datetime}`
-		document.querySelector('.d6').innerHTML = `${dt.wbData[5].datetime}`
-		document.querySelector('.d7').innerHTML = `${dt.wbData[6].datetime}`
-		document.querySelector('.weather_week').style.display = 'flex'
-		document.querySelector('.i1').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[0].weather.icon}.png`)
-		document.querySelector('.w1h').textContent = `${dt.wbData[0].max_temp}`
-		document.querySelector('.w1l').textContent = `${dt.wbData[0].min_temp}`
-		document.querySelector('.i2').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[1].weather.icon}.png`)
-		document.querySelector('.w2h').textContent = `${dt.wbData[1].max_temp}`
-		document.querySelector('.w2l').textContent = `${dt.wbData[1].min_temp}`
-		document.querySelector('.i3').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[2].weather.icon}.png`)
-		document.querySelector('.w3h').textContent = `${dt.wbData[2].max_temp}`
-		document.querySelector('.w3l').textContent = `${dt.wbData[2].min_temp}`
-		document.querySelector('.i4').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[3].weather.icon}.png`)
-		document.querySelector('.w4h').textContent = `${dt.wbData[3].max_temp}`
-		document.querySelector('.w4l').textContent = `${dt.wbData[3].min_temp}`
-		document.querySelector('.i5').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[4].weather.icon}.png`)
-		document.querySelector('.w5h').textContent = `${dt.wbData[4].max_temp}`
-		document.querySelector('.w5l').textContent = `${dt.wbData[4].min_temp}`
-		document.querySelector('.i6').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[5].weather.icon}.png`)
-		document.querySelector('.w6h').textContent = `${dt.wbData[5].max_temp}`
-		document.querySelector('.w6l').textContent = `${dt.wbData[5].min_temp}`
-		document.querySelector('.i7').setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[6].weather.icon}.png`)
-		document.querySelector('.w7h').textContent = `${dt.wbData[6].max_temp}`
-		document.querySelector('.w7l').textContent = `${dt.wbData[6].min_temp}`
 	}
+
+	for (let i = 0; i <= 6; i++) {
+		document.querySelector(`.d${i + 1}`).innerHTML = `${dt.wbData[i].datetime}`
+		document.querySelector(`.i${i + 1}`).setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[i].weather.icon}.png`)
+		document.querySelector(`.w${i + 1}h`).textContent = `${dt.wbData[i].max_temp}`
+		document.querySelector(`.w${i + 1}l`).textContent = `${dt.wbData[i].min_temp}`
+	}
+
+	document.querySelector('.weather_week').style.display = 'flex'
 	console.log(geoNamesData[0].latitude, geoNamesData[0].longitude)
 	document.querySelector('.map').style.display = 'block'
 }
@@ -120,7 +100,7 @@ const postGN = async (url = '', data = {}) => {
 		console.log(data);
 		geoNamesData = []
 		geoNamesData.push(data)
-		console.log(geoNamesData)
+		console.log(data, geoNamesData)
 		Client.mkmp(data.latitude, data.longitude);
 
 		return data;

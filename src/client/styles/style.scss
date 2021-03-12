@@ -8,18 +8,19 @@ body{
 #container{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px auto auto auto auto 50px;
+    grid-template-rows: 50px auto auto auto auto auto 50px;
     grid-template-areas: 
     "hd"
     "lb"
     "rb"
+    "tf"
     "ww"
     "mp"
     "ft";
     color: #000000;
     // justify-content: center;
     // align-items: center;
-    grid-gap: 20px;
+    grid-gap: 30px;
     // margin: 0px 150px;
 }
 
@@ -36,7 +37,7 @@ body{
 .left_box {
     grid-area: lb;
     text-align: center;
-    
+    margin-top: 150px;
 }
 
 .form_handler {
@@ -87,6 +88,7 @@ input {
 }
 
 .text {
+    grid-area: tf;
     text-align: center;
     // border: 1px solid blue;
     margin: auto;
@@ -104,8 +106,8 @@ input {
 #issMap {
     display: none;
     height: 180px;
-    // width: 700px;
-    // margin: auto;
+    width: 80%;
+    margin: auto;
 }
 
 .footer {
