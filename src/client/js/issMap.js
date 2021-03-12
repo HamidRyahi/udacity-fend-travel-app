@@ -1,7 +1,7 @@
 
 
 
-const mymap = L.map('issMap').setView([0, 0], 10);
+const mymap = L.map('issMap').setView([0, 0], 1);
 let marker = L.marker([0, 0]).addTo(mymap);
 
 
@@ -16,9 +16,13 @@ const mkmp = (lat, lan) => {
     tiles.addTo(mymap)
 
     marker.setLatLng([lat, lan]);
-    var latLngs = [marker.getLatLng()];
-    var markerBounds = L.latLngBounds(latLngs);
-    mymap.fitBounds(markerBounds);
+    // var latLngs = [marker.getLatLng()];
+    // var markerBounds = L.latLngBounds(latLngs);
+    // mymap.fitBounds(markerBounds);
+    // mymap.setZoom(7);
+    mymap.setView([lat, lan], 8);
+
+
 
 }
 export { mkmp }
