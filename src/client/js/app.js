@@ -64,7 +64,6 @@ const updateUI = (dt) => {
 			<p><strong>High: ${dt.wbData[numba2].max_temp}, Low: ${dt.wbData[numba2].min_temp}</strong><br>
 			<strong>${dt.wbData[numba2].weather.description}</strong> throughout the day.</p>`
 	}
-
 	for (let i = 0; i <= 6; i++) {
 		document.querySelector(`.d${i + 1}`).innerHTML = `${dt.wbData[i].datetime}`
 		document.querySelector(`.i${i + 1}`).setAttribute('src', `https://www.weatherbit.io/static/img/icons/${dt.wbData[i].weather.icon}.png`)
@@ -85,7 +84,6 @@ const updateImg = (dt) => {
 		imgContainer.src = `${dt.countryFlagsBase}${geoNamesData[0].countryCode.toLowerCase()}.jpg`
 	}
 }
-
 const postGN = async (url = '', data = {}) => {
 	const response = await fetch(url, {
 		method: 'POST',
@@ -123,6 +121,8 @@ const postWB = async (url = '', data = {}) => {
 	try {
 		const data = await response.json();
 		console.log(data);
+	Client.buildTableFunc()
+
 		updateUI(data)
 		return data;
 	} catch (error) {

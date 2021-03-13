@@ -101,22 +101,6 @@ app.post("/pb", async (req, res) => {
     });
   } catch (err) {
     console.log("PB error", err);
-    // let url2 = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${country}&image_type=photo`;
-    // const response = await fetch(url2, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/JSON",
-    //   }
-    // });
-    // try {
-    //   const data = await response.json();
-    //   // console.log(data)
-    //   res.send({
-    //     img: data.hits[0].webformatURL
-    //   });
-    // } catch (err) {
-    //   console.log("error", err);
-    // }
     res.send({
       countryFlagsBase: 'https://flagcdn.com/w320/'
     })
