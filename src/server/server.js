@@ -22,17 +22,10 @@ app.use(express.static('dist'));
 app.get('/', function (req, res) {
   res.sendFile('dist/index.html')
 })
-// Setup Server
-
-// const port = 8081;
-// const server = app.listen(port, () => { console.log(`running on localhost: ${port}`) })
-
 
 app.get("/", (req, res) => {
   res.status(200).send("Hello World!");
 });
-
-
 
 app.post("/geonames", async (req, res) => {
   console.log('GN request body:', req.body)
@@ -85,7 +78,6 @@ app.post("/wbd", async (req, res) => {
 
 app.post("/pb", async (req, res) => {
   const city = req.body.cityName;
-  // const num = req.body.num;
   let url = `https://pixabay.com/api/?key=${process.env.PB_key}&q=${city}&image_type=photo`;
   console.log('PB url:', url);
   const response = await fetch(url, {
@@ -107,5 +99,4 @@ app.post("/pb", async (req, res) => {
   }
 });
 
-
-module.exports = app
+module.exports = app;
