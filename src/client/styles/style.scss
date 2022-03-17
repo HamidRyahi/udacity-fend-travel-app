@@ -1,17 +1,18 @@
-
-body{
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    margin: auto;
-    // height: 100vh;
-
+body {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  margin: auto;
 }
 
-#container{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px auto auto auto auto auto 50px;
-    grid-template-areas: 
+#container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px auto auto auto auto auto 50px;
+  grid-template-areas:
     "hd"
     "lb"
     "rb"
@@ -19,128 +20,113 @@ body{
     "ww"
     "mp"
     "ft";
-    color: #000000;
-    // justify-content: center;
-    // align-items: center;
-    grid-gap: 30px;
-    // margin: 0px 150px;
+  color: #000000;
+  grid-gap: 30px;
 }
 
 .headline {
-    grid-area: hd;
-    text-align: center;
-    
+  grid-area: hd;
+  text-align: center;
 }
 
 #logo {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .left_box {
-    grid-area: lb;
-    text-align: center;
-    margin-top: 150px;
+  grid-area: lb;
+  text-align: center;
+  margin-top: 150px;
 }
 
 .form_handler {
-    padding: 20px;
+  padding: 20px;
 }
 
-.to {
-    padding-bottom: 15px;
-}
-
-.date_input {
-    padding-bottom: 15px;
-}
-
-.end {
-    padding-bottom: 15px;
+.to, .date_input {
+  padding-bottom: 15px;
 }
 
 input {
-    margin: 8px 0;
-    border-radius: 4px;
+  padding: 5px;
+  margin: 8px 0;
+  border-radius: 4px;
 }
 
 #generate {
-    width: 100px;
-    height: 25px;
+  width: 100px;
+  height: 25px;
+  padding: 5px;
+}
+
+
+.img_container {
+  margin: auto;
+  width: 100%;
+  height: auto;
 }
 
 .right_box {
-    grid-area: rb;
-    text-align: center;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
-.img_container {
-    margin: auto;
-    width: 100%;
-    height: auto;
+  grid-area: rb;
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .countryFlag {
-    width: 320px;
-    margin: auto;
-}
-
-.text {
-    grid-area: tf;
-    text-align: center;
-    // border: 1px solid blue;
-    margin: auto;
-    padding-left: 50px;
+  width: 320px;
+  margin: auto;
 }
 
 .feed {
-    font-size: medium;
-    // margin-top: 50px;
+  font-size: medium;
 }
 
 .map {
-    grid-area: mp;
+  grid-area: mp;
 }
 
 #issMap {
-    display: none;
-    height: 180px;
-    width: 80%;
-    margin: auto;
+  display: none;
+  height: 180px;
+  width: 80%;
+  margin: auto;
 }
 
 .footer {
-    grid-area: ft;
-    text-align: center;
-    
+  grid-area: ft;
+  text-align: center;
 }
 
 #generate:hover {
-    background-color: gray;
+  background-color: gray;
 }
 
-#city:hover, #depart:hover, #end:hover {
-    -webkit-box-shadow: 0px 2px 12px 3px rgba(0,0,0,0.88); 
-    box-shadow: 0px 2px 12px 3px rgba(0,0,0,0.88);
+#city:hover,
+#depart:hover,
+#end:hover {
+  -webkit-box-shadow: 0px 2px 12px 3px rgba(0, 0, 0, 0.88);
+  box-shadow: 0px 2px 12px 3px rgba(0, 0, 0, 0.88);
 }
 
 @media only screen and (max-width: 960px) {
-    #issMap {
-        width: 100%;
-    }
+  #issMap {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 821px) {
-    .right_box {
-        flex-direction: row;
-    }
-    .img_container {
-        width: 100%;
-        height: auto;
-    }
+  .right_box {
+    flex-direction: row;
+  }
+  .text {
+    padding-left: 50px;
+  }
+  .img_container {
+    width: 100%;
+    height: auto;
+  }
 }
-
