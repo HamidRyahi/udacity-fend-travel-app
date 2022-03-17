@@ -23,10 +23,6 @@ app.get('/', function (req, res) {
   res.sendFile('dist/index.html')
 })
 
-app.get("/", (req, res) => {
-  res.status(200).send("Hello World!");
-});
-
 app.post("/geonames", async (req, res) => {
   console.log('GN request body:', req.body)
   const city = req.body.cityName;
