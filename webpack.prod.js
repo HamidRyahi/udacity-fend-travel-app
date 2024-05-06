@@ -18,12 +18,12 @@ module.exports = {
         library: 'Client'
     },
     module: {
-        loaders: [
-            {
-              test: /.s?css$/,
-              use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-            },
-          ],
+        // loaders: [
+        //     {
+        //       test: /.s?css$/,
+        //       use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        //     },
+        //   ],
         rules: [
             {
                 test: '/\.js$/',
